@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efd0591ffd1b73a082b66dc35ea3eca2",
+    "content-hash": "f1bed3dc10dd3a4a109b42457722a977",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -70,16 +70,16 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.1.0",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "6d997296d2a233a4b6040a23f45980e83800c70d"
+                "reference": "add260fdaf74e83be8d3e03be3550d9c857cb43e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/6d997296d2a233a4b6040a23f45980e83800c70d",
-                "reference": "6d997296d2a233a4b6040a23f45980e83800c70d",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/add260fdaf74e83be8d3e03be3550d9c857cb43e",
+                "reference": "add260fdaf74e83be8d3e03be3550d9c857cb43e",
                 "shasum": ""
             },
             "require": {
@@ -106,9 +106,9 @@
             "description": "NitroPHP — a lean, fast, Laravel-shaped PHP framework.",
             "support": {
                 "issues": "https://github.com/NitroFramework/framework/issues",
-                "source": "https://github.com/NitroFramework/framework/tree/v0.1.0"
+                "source": "https://github.com/NitroFramework/framework/tree/v0.2.0"
             },
-            "time": "2026-07-06T18:06:48+00:00"
+            "time": "2026-07-06T18:54:24+00:00"
         },
         {
             "name": "phpoption/phpoption",
