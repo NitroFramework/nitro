@@ -26,6 +26,19 @@ class PasswordResetLinkController extends BaseController
     {
         request()->validate(['email' => 'required|email']);
 
+        // Throttle reset requests (per email + IP) so the endpoint can't be used
+        // to bomb an inbox with reset emails.
+        $limiter = app(\Nitro\Cache\RateLimiter::class);
+        $key = 'password-reset:' . strtolower((string) request('email')) . '|' . request()->ip();
+
+        if ($limiter->tooManyAttempts($key, 3)) {
+            $seconds = $limiter->availableIn($key);
+            return back()->withInput()->withErrors([
+                'email' => "Too many reset requests. Please try again in {$seconds} seconds.",
+            ]);
+        }
+        $limiter->hit($key, 60);
+
         app(PasswordBroker::class)->sendResetLink(
             request()->only('email'),
             function ($user, string $token) {
