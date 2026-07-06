@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * Nitro Framework Console Application Entry Point
+ * 
+ * This script serves as the main entry point for all console commands
+ * in the Nitro PHP framework. It bootstraps the application in the same
+ * way as the web interface but provides a CLI interface instead.
+ * 
+ * Usage: php nitro <command> [arguments]
+ * 
+ * Examples:
+ *   php nitro help
+ *   php nitro route:cache
+ *   php nitro view:clear
+ * 
+ * @author Zeeshan Ali
+ */
+
+// Load Composer autoloader
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Nitro\Foundation\Application;
+use Nitro\Console\Kernel as ConsoleKernel;
+
+// Bootstrap the application - same way as your public/index.php
+$app = new Application(__DIR__);
+$app->bootstrap();
+
+// Create and run console; propagate the command's exit code to the shell.
+$console = $app->getContainer()->get(ConsoleKernel::class);
+exit($console->run($argv));

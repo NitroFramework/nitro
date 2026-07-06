@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Controllers\Auth;
+
+use Nitro\Auth\Passwords\PasswordBroker;
+use Nitro\Http\Controller\BaseController;
+use Nitro\Http\RedirectResponse;
+use Nitro\Http\Response;
+use Nitro\Mail\Contracts\Mailer;
+
+/**
+ * Handles requesting a password-reset link (Laravel's PasswordResetLinkController).
+ */
+class PasswordResetLinkController extends BaseController
+{
+    /** Show the "forgot password" form. */
+    public function create(): Response
+    {
+        return view('authentication.forgot-password', [
+            'title' => 'Forgot Password',
+        ]);
+    }
+
+    /** Validate the email and send a reset link (always reporting success). */
+    public function store(): RedirectResponse
+    {
+        request()->validate(['email' => 'required|email']);
+
+        app(PasswordBroker::class)->sendResetLink(
+            request()->only('email'),
+            function ($user, string $token) {
+                $email = (string) request('email');
+                $url = rtrim((string) config('app.url', ''), '/')
+                    . '/reset-password/' . $token
+                    . '?email=' . urlencode($email);
+
+                app(Mailer::class)->send(
+                    $email,
+                    'Reset your password',
+                    "Reset your password using the link below:\n\n{$url}\n",
+                );
+            },
+        );
+
+        // Same response whether or not the email exists — no account enumeration.
+        return back()->with('status', 'If that account exists, a reset link has been sent.');
+    }
+}
