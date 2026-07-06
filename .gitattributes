@@ -1,0 +1,8 @@
+# Treat bundled front-end assets as vendored/generated so GitHub Linguist
+# reports the repo's actual language (PHP) instead of the theme's CSS/JS.
+public/assets/**     linguist-vendored
+public/js/vendor/**  linguist-vendored
+public/css/**        linguist-vendored
+*.min.css            linguist-vendored
+*.min.js             linguist-vendored
+*.map                linguist-generated
