@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "072d88b42daf46dbd155a0db20eac131",
+    "content-hash": "efd0591ffd1b73a082b66dc35ea3eca2",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -70,11 +70,17 @@
         },
         {
             "name": "nitro/framework",
-            "version": "dev-master",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NitroFramework/framework.git",
+                "reference": "6d997296d2a233a4b6040a23f45980e83800c70d"
+            },
             "dist": {
-                "type": "path",
-                "url": "../nitro-framework",
-                "reference": "816401051d0d0ecfb7654f6ab045cfdc663a1bac"
+                "type": "zip",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/6d997296d2a233a4b6040a23f45980e83800c70d",
+                "reference": "6d997296d2a233a4b6040a23f45980e83800c70d",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.2",
@@ -86,31 +92,23 @@
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Nitro\\": "src/"
-                },
                 "files": [
                     "src/Support/helpers.php"
-                ]
-            },
-            "autoload-dev": {
+                ],
                 "psr-4": {
-                    "Tests\\": "tests/"
+                    "Nitro\\": "src/"
                 }
             },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit --testdox --colors=always"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "description": "NitroPHP — a lean, fast, Laravel-shaped PHP framework.",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/NitroFramework/framework/issues",
+                "source": "https://github.com/NitroFramework/framework/tree/v0.1.0"
+            },
+            "time": "2026-07-06T18:06:48+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -2307,11 +2305,9 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "dev",
-    "stability-flags": {
-        "nitro/framework": 20
-    },
-    "prefer-stable": true,
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
