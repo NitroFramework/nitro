@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b01b6849805f08f3fa866596e27cb64c",
+    "content-hash": "072d88b42daf46dbd155a0db20eac131",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -70,17 +70,11 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.6.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "7f8c11563d92c0d2ad785dbb30f7334b2a69d528"
-            },
+            "version": "dev-feat/cookie-encryption",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/7f8c11563d92c0d2ad785dbb30f7334b2a69d528",
-                "reference": "7f8c11563d92c0d2ad785dbb30f7334b2a69d528",
-                "shasum": ""
+                "type": "path",
+                "url": "../nitro-framework",
+                "reference": "7f8c11563d92c0d2ad785dbb30f7334b2a69d528"
             },
             "require": {
                 "php": "^8.2",
@@ -92,14 +86,23 @@
             },
             "type": "library",
             "autoload": {
-                "files": [
-                    "src/Support/helpers.php"
-                ],
                 "psr-4": {
                     "Nitro\\": "src/"
+                },
+                "files": [
+                    "src/Support/helpers.php"
+                ]
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tests\\": "tests/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit --testdox --colors=always"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -116,7 +119,10 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-07-07T09:08:50+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "phpoption/phpoption",
@@ -2313,9 +2319,11 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
-    "prefer-stable": false,
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "nitro/framework": 20
+    },
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
