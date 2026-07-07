@@ -37,10 +37,10 @@ class MailTest extends TestCase
         $this->assertInstanceOf(MailerContract::class, Container::getInstance()->make(MailerContract::class));
     }
 
-    public function test_legacy_send_still_works_for_auth_flows(): void
+    public function test_raw_send_works_for_auth_flows(): void
     {
-        // app(Mailer::class)->send($to, $subject, $body) must not throw (log driver).
-        Container::getInstance()->make(MailerContract::class)->send('user@x.dev', 'Reset', 'link');
+        // app(Mailer::class)->raw($to, $subject, $body) must not throw (log driver).
+        Container::getInstance()->make(MailerContract::class)->raw('user@x.dev', 'Reset', 'link');
         $this->assertTrue(true);
     }
 
@@ -55,7 +55,7 @@ class MailTest extends TestCase
         @file_get_contents('http://127.0.0.1:8025/api/v1/messages', false, stream_context_create(['http' => ['method' => 'DELETE']]));
 
         $subject = 'Skeleton SMTP ' . bin2hex(random_bytes(4));
-        Mail::mailer('smtp')->sendMessage(
+        Mail::mailer('smtp')->send(
             (new Message())->to('user@example.com')->subject($subject)->html('<p>hi</p>')
         );
 

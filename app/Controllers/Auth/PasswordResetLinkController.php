@@ -47,7 +47,7 @@ class PasswordResetLinkController extends BaseController
                     . '/reset-password/' . $token
                     . '?email=' . urlencode($email);
 
-                app(Mailer::class)->send(
+                app(Mailer::class)->raw(
                     $email,
                     'Reset your password',
                     "Reset your password using the link below:\n\n{$url}\n",

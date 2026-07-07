@@ -22,7 +22,7 @@ trait SendsEmailVerification
             . '/verify-email/' . $user->getAuthIdentifier()
             . '/' . sha1($user->getEmailForVerification());
 
-        app(Mailer::class)->send(
+        app(Mailer::class)->raw(
             $user->getEmailForVerification(),
             'Verify your email address',
             "Confirm your email address by visiting the link below:\n\n{$url}\n",
