@@ -2,19 +2,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="color-scheme" content="light dark">
-
-    {{-- FOUC-safe theme bootstrap. Must run before <body> paints. --}}
-    <script>
-        (function () {
-            try {
-                var stored = localStorage.getItem('theme');
-                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-                var dark = stored ? stored === 'dark' : prefersDark;
-                if (dark) document.documentElement.classList.add('dark');
-            } catch (e) {}
-        })();
-    </script>
 
     <title>{{ $title ?? 'NitroPHP' }}</title>
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">

@@ -3,8 +3,6 @@
 @source "../views/**/*.blade.php";
 @source "../../app/**/*.php";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
   --color-brand-50:  #eef4ff;
   --color-brand-100: #d9e6ff;
@@ -22,15 +20,4 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply bg-slate-50 text-slate-900 antialiased; }
-  .dark body { @apply bg-slate-950 text-slate-100; }
-
-  /* Smooth theme transition — color/bg/border/fill only, never transforms */
-  body, body * {
-    transition-property: background-color, border-color, color, fill, stroke;
-    transition-duration: 180ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Dark scrollbar */
-  .dark { color-scheme: dark; }
 }

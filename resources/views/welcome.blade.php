@@ -1,78 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-brand-600 via-brand-700 to-indigo-700 px-6 py-20 text-white sm:px-12 sm:py-28">
-        <div class="absolute -right-20 -top-20 h-72 w-72 rounded-full bg-white/10 blur-3xl"></div>
-        <div class="absolute -bottom-32 -left-10 h-72 w-72 rounded-full bg-indigo-400/20 blur-3xl"></div>
+    <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-500 via-brand-600 to-indigo-700 px-6 py-20 text-center text-white shadow-2xl shadow-brand-600/30 sm:px-12 sm:py-28">
+        <div class="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-white/20 blur-3xl"></div>
+        <div class="absolute -bottom-32 -left-16 h-80 w-80 rounded-full bg-violet-500/40 blur-3xl"></div>
 
-        <div class="relative mx-auto max-w-3xl text-center">
-            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-wider ring-1 ring-white/20">
-                ⚡ A plain-PHP framework
+        <div class="relative mx-auto max-w-2xl">
+            <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest ring-1 ring-white/25">
+                ⚡ NitroPHP
             </span>
-            <h1 class="mt-6 text-4xl font-extrabold leading-tight sm:text-5xl">
-                NitroPHP — Laravel-grade ergonomics, <span class="text-brand-200">zero magic.</span>
+            <h1 class="mt-7 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl">
+                A lean, fast,<br><span class="text-brand-200">Laravel-shaped</span> PHP framework.
             </h1>
-            <p class="mx-auto mt-5 max-w-xl text-base text-brand-100 sm:text-lg">
-                A handwritten PHP framework with its own Blade engine, query builder, container, router,
-                and HTMX components — no Laravel dependency.
+            <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-brand-100 sm:text-lg">
+                Routing, an Eloquent-style ORM, a Blade-compatible view engine, validation, queues,
+                auth, and a reactive HTMX&nbsp;+&nbsp;Livewire layer — on a deliberately small core.
             </p>
-            <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                <x-ui.button href="/dashboard" size="lg" variant="secondary">Go to dashboard →</x-ui.button>
-                <x-ui.button href="/docs" size="lg" variant="ghost" class="!text-white hover:!bg-white/10">
-                    Read the architecture docs
-                </x-ui.button>
+
+            <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
+                @auth
+                    <a href="/" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-brand-50">
+                        You're signed in →
+                    </a>
+                @else
+                    <a href="/register" class="rounded-xl bg-white px-6 py-3 text-sm font-semibold text-brand-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-brand-50">
+                        Get started
+                    </a>
+                    <a href="/login" class="rounded-xl px-6 py-3 text-sm font-semibold text-white ring-1 ring-white/30 transition hover:bg-white/10">
+                        Log in
+                    </a>
+                @endauth
             </div>
         </div>
     </section>
 
-    <section class="mt-12">
-        <h2 class="text-lg font-semibold text-slate-900 dark:text-slate-100">Try it</h2>
-        <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">Every link below hits a real route in this app.</p>
-
-        <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            @php
-                $features = [
-                    ['icon' => '🎓', 'title' => 'Students CRUD',     'href' => '/students',       'desc' => 'Models, query builder, pagination, validation, flash errors.'],
-                    ['icon' => '👤', 'title' => 'Users',             'href' => '/users',          'desc' => 'Controller + view + form post end-to-end.'],
-                    ['icon' => '🔢', 'title' => 'HTMX Counter',      'href' => '/counter',        'desc' => 'Stateful HTMX component with auto state persistence.'],
-                    ['icon' => '🧪', 'title' => 'Component showcase','href' => '/showcase',       'desc' => 'Every HTMX attribute the kernel supports.'],
-                    ['icon' => '✅', 'title' => 'Todo list',         'href' => '/todo',           'desc' => 'Form binding, validation, partial swaps.'],
-                    ['icon' => '🧩', 'title' => 'Blade showcase',    'href' => '/blade-showcase', 'desc' => 'Layouts, stacks, fragments, includes, components.'],
-                    ['icon' => '📊', 'title' => 'Dashboard',         'href' => '/dashboard',      'desc' => 'A minimal landing for authenticated users.'],
-                    ['icon' => '🛠️', 'title' => 'Test routes',       'href' => '/test',           'desc' => 'Query builder probes, joins, aggregates, transactions.'],
-                ];
-            @endphp
-
-            @foreach ($features as $f)
-                <a href="{{ $f['href'] }}"
-                   class="group rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900 dark:shadow-none dark:hover:border-brand-400/50 dark:hover:bg-slate-900/80 dark:hover:shadow-brand-500/5">
-                    <div class="text-2xl">{{ $f['icon'] }}</div>
-                    <h3 class="mt-3 text-sm font-semibold text-slate-900 group-hover:text-brand-700 dark:text-slate-100 dark:group-hover:text-brand-200">{{ $f['title'] }}</h3>
-                    <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">{{ $f['desc'] }}</p>
-                    <span class="mt-3 inline-block text-xs font-medium text-brand-600 group-hover:underline dark:text-brand-300">{{ $f['href'] }} →</span>
-                </a>
-            @endforeach
+    <section class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-3">
+        <div class="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-slate-200/60">
+            <div class="text-2xl">🧩</div>
+            <h3 class="mt-4 text-base font-bold">Familiar by design</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-slate-600">
+                Controllers, models, migrations, Blade, and validation you already know — swap
+                <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-brand-700">Illuminate</code>
+                for <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-brand-700">Nitro</code>.
+            </p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-slate-200/60">
+            <div class="text-2xl">⚡</div>
+            <h3 class="mt-4 text-base font-bold">Reactive, no SPA</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-slate-600">
+                Server-rendered components swapped over the wire with a built-in HTMX layer and a
+                from-scratch Livewire-shaped layer.
+            </p>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-slate-200/60">
+            <div class="text-2xl">🛠️</div>
+            <h3 class="mt-4 text-base font-bold">Batteries + CLI</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-slate-600">
+                The <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-brand-700">./nitro</code>
+                CLI runs migrations, makes components, generates keys, and serves the app.
+            </p>
         </div>
     </section>
 
-    <section class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <x-ui.card title="Built without Composer-heavy deps">
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Just <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs dark:bg-slate-800 dark:text-slate-300">vlucas/phpdotenv</code> and PHPUnit. Everything
-                else — Blade engine, container, router, ORM — is in <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs dark:bg-slate-800 dark:text-slate-300">src/</code>.
-            </p>
-        </x-ui.card>
-        <x-ui.card title="HTMX-first, no SPA">
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                Stateful PHP components rendered on the server, swapped on the client via HTMX. Optional
-                Alpine and idiomorph for richer UX.
-            </p>
-        </x-ui.card>
-        <x-ui.card title="Bundled tooling">
-            <p class="text-sm text-slate-600 dark:text-slate-400">
-                The <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs dark:bg-slate-800 dark:text-slate-300">./nitro</code> CLI runs migrations,
-                makes components, clears caches, and serves the app.
-            </p>
-        </x-ui.card>
-    </section>
+    <p class="mt-10 text-center text-sm text-slate-500">
+        Edit <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-brand-700">resources/views/welcome.blade.php</code>
+        to change this page.
+    </p>
 @endsection

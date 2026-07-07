@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto max-w-lg py-16 text-center">
-        <p class="text-sm font-semibold text-brand-600 dark:text-brand-300">404</p>
-        <h1 class="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-slate-100">Page not found</h1>
-        <p class="mt-3 text-base text-slate-600 dark:text-slate-400">
-            Sorry, we couldn't find what you were looking for.
+    <div class="mx-auto max-w-lg py-24 text-center">
+        <p class="text-sm font-bold uppercase tracking-widest text-brand-600">{{ $code ?? 'Error' }}</p>
+        <h1 class="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">{{ $title ?? 'Something went wrong' }}</h1>
+        <p class="mt-3 text-base text-slate-600">
+            {{ $message ?? 'An unexpected error occurred. Please try again.' }}
         </p>
-        <div class="mt-6 flex items-center justify-center gap-3">
-            <x-ui.button href="/" variant="primary">Go home</x-ui.button>
-            <x-ui.button href="/dashboard" variant="outline">Dashboard</x-ui.button>
-        </div>
+        <a href="/"
+            class="mt-7 inline-flex items-center rounded-xl bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-700">
+            ← Back home
+        </a>
     </div>
 @endsection
