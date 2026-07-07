@@ -6,7 +6,7 @@ return [
     | Default Database Connection
     |--------------------------------------------------------------------------
     */
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'sqlite'),
 
     /*
     |--------------------------------------------------------------------------
@@ -14,6 +14,13 @@ return [
     |--------------------------------------------------------------------------
     */
     'connections' => [
+        // Zero-config default — a single file, no server. `nitro migrate`
+        // creates the file if it doesn't exist yet.
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE', base_path('database/database.sqlite')),
+        ],
+
         'mysql' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', 'localhost'),

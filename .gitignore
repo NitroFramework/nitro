@@ -8,6 +8,7 @@
 /storage/framework/views/*
 /storage/logs/*
 /public/hot
+/database/*.sqlite
 .env
 .DS_Store
 Thumbs.db
