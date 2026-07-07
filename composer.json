@@ -17,7 +17,7 @@
     },
     "require": {
         "php": "^8.2",
-        "nitro/framework": "^0.14.7"
+        "nitro/framework": "^0.14.8"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5"
