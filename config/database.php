@@ -61,6 +61,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Redis Connections
+    |--------------------------------------------------------------------------
+    | Used by the Redis client (Redis:: / redis()) and any redis-backed
+    | cache/session. Requires the phpredis extension.
+    */
+    'redis' => [
+        'default' => env('REDIS_CONNECTION', 'default'),
+        'connections' => [
+            'default' => [
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'port' => (int) env('REDIS_PORT', 6379),
+                'password' => env('REDIS_PASSWORD') ?: null,
+                'database' => (int) env('REDIS_DB', 0),
+            ],
+            'cache' => [
+                'host' => env('REDIS_HOST', '127.0.0.1'),
+                'port' => (int) env('REDIS_PORT', 6379),
+                'password' => env('REDIS_PASSWORD') ?: null,
+                'database' => (int) env('REDIS_CACHE_DB', 1),
+            ],
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Query Logging
     |--------------------------------------------------------------------------
     */

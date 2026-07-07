@@ -17,7 +17,7 @@
     },
     "require": {
         "php": "^8.2",
-        "nitro/framework": "^0.8.0"
+        "nitro/framework": "^0.9.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^11.5"
@@ -44,6 +44,6 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php nitro key:generate"
         ],
-        "test": "vendor/bin/phpunit --testdox --colors=always"
+        "test": "@php vendor/phpunit/phpunit/phpunit --testdox --colors=always"
     }
 }
