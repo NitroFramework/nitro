@@ -70,16 +70,16 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "750811afb8dc7876c1c0973fcc46c91bd703da0d"
+                "reference": "e7a8e04cc73b74a89614262ee4e4d7bce6650906"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/750811afb8dc7876c1c0973fcc46c91bd703da0d",
-                "reference": "750811afb8dc7876c1c0973fcc46c91bd703da0d",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/e7a8e04cc73b74a89614262ee4e4d7bce6650906",
+                "reference": "e7a8e04cc73b74a89614262ee4e4d7bce6650906",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-07-07T08:07:30+00:00"
+            "time": "2026-07-07T08:24:50+00:00"
         },
         {
             "name": "phpoption/phpoption",
