@@ -7,9 +7,8 @@ public/css/**        linguist-vendored
 *.min.js             linguist-vendored
 *.map                linguist-generated
 
-# Framework runtime scripts shipped into public/ are vendored, not app code.
-# (livewire.js is now served by the framework itself — no app copy.)
-public/js/hx-component.js  linguist-vendored
+# (The livewire.js and hx-component.js runtimes are now served by the framework
+# itself — no app copies remain in public/js.)
 
 # Count Blade templates as PHP (Linguist tags them as a separate "Blade"
 # language by default, which starves the PHP stat).

@@ -1,4 +1,4 @@
-<script src="/js/hx-component.js?v={{ @filemtime(base_path('public/js/hx-component.js')) ?: '1' }}"></script>
+@htmxScripts
 
 <script>
     /* ----- HX-Response-Data binding ----- */
