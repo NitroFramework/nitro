@@ -9,12 +9,14 @@ use Nitro\Auth\Contracts\Authenticatable as AuthenticatableContract;
 use Nitro\Auth\Contracts\MustVerifyEmail as MustVerifyEmailContract;
 use Nitro\Database\Factory\HasFactory;
 use Nitro\Database\Model\BaseModel;
+use Nitro\Notifications\Notifiable;
 
 class User extends BaseModel implements AuthenticatableContract, MustVerifyEmailContract
 {
     use HasFactory;
     use Authenticatable;
     use MustVerifyEmailTrait;
+    use Notifiable;
 
     protected string $table = 'users';
 
