@@ -20,6 +20,7 @@
     <script defer src="/js/vendor/alpine.min.js"></script>
     @if (config('nprogress.enabled'))
         <script defer src="/js/vendor/nprogress.js"></script>
+        @nprogressScripts
     @endif
 
     @livewireStyles
