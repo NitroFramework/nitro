@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Auth;
 
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 use Nitro\Http\Response;
 
@@ -11,7 +11,7 @@ use Nitro\Http\Response;
  * ConfirmablePasswordController). Records the confirmation time in the session;
  * the 'password.confirm' middleware reads it.
  */
-class ConfirmablePasswordController extends BaseController
+class ConfirmablePasswordController extends Controller
 {
     public function show(): Response
     {

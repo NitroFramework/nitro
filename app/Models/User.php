@@ -8,10 +8,10 @@ use Nitro\Auth\Concerns\MustVerifyEmail as MustVerifyEmailTrait;
 use Nitro\Auth\Contracts\Authenticatable as AuthenticatableContract;
 use Nitro\Auth\Contracts\MustVerifyEmail as MustVerifyEmailContract;
 use Nitro\Database\Factory\HasFactory;
-use Nitro\Database\Model\BaseModel;
+use Nitro\Database\Model\Model;
 use Nitro\Notifications\Notifiable;
 
-class User extends BaseModel implements AuthenticatableContract, MustVerifyEmailContract
+class User extends Model implements AuthenticatableContract, MustVerifyEmailContract
 {
     use HasFactory;
     use Authenticatable;

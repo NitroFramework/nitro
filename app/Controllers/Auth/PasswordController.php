@@ -2,7 +2,7 @@
 
 namespace App\Controllers\Auth;
 
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 use Nitro\Support\Hash;
 
@@ -10,7 +10,7 @@ use Nitro\Support\Hash;
  * Updates the authenticated user's password from a profile/settings page
  * (Laravel's PasswordController). Requires the current password.
  */
-class PasswordController extends BaseController
+class PasswordController extends Controller
 {
     public function update(): RedirectResponse
     {

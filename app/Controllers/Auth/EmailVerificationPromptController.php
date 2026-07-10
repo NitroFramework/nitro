@@ -3,7 +3,7 @@
 namespace App\Controllers\Auth;
 
 use Nitro\Auth\Contracts\MustVerifyEmail;
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\Response;
 
 /**
@@ -11,7 +11,7 @@ use Nitro\Http\Response;
  * EmailVerificationPromptController). Bounces already-verified users to the
  * dashboard.
  */
-class EmailVerificationPromptController extends BaseController
+class EmailVerificationPromptController extends Controller
 {
     public function show(): Response
     {

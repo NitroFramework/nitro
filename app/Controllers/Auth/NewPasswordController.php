@@ -3,7 +3,7 @@
 namespace App\Controllers\Auth;
 
 use Nitro\Auth\Passwords\PasswordBroker;
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 use Nitro\Http\Response;
 use Nitro\Support\Hash;
@@ -11,7 +11,7 @@ use Nitro\Support\Hash;
 /**
  * Handles choosing a new password from a reset link (Laravel's NewPasswordController).
  */
-class NewPasswordController extends BaseController
+class NewPasswordController extends Controller
 {
     /** Show the reset form for a given token (email comes from the query string). */
     public function create(string $token): Response

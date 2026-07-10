@@ -2,14 +2,14 @@
 
 namespace App\Controllers\Auth;
 
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 use Nitro\Http\Response;
 
 /**
  * Breeze-style login: show form, attempt login, logout.
  */
-class LoginController extends BaseController
+class LoginController extends Controller
 {
     /**
      * Show the login form.

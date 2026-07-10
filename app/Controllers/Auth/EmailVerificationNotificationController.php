@@ -5,14 +5,14 @@ namespace App\Controllers\Auth;
 use App\Controllers\Auth\Concerns\SendsEmailVerification;
 use Nitro\Auth\Contracts\Authenticatable;
 use Nitro\Auth\Contracts\MustVerifyEmail;
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 
 /**
  * Resends the email-verification link (Laravel's
  * EmailVerificationNotificationController).
  */
-class EmailVerificationNotificationController extends BaseController
+class EmailVerificationNotificationController extends Controller
 {
     use SendsEmailVerification;
 

@@ -4,7 +4,7 @@ namespace App\Controllers\Auth;
 
 use App\Controllers\Auth\Concerns\SendsEmailVerification;
 use App\Models\User;
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 use Nitro\Http\Response;
 use Nitro\Support\Hash;
@@ -12,7 +12,7 @@ use Nitro\Support\Hash;
 /**
  * Breeze-style registration: show form, validate, create user, log in, redirect.
  */
-class RegisterController extends BaseController
+class RegisterController extends Controller
 {
     use SendsEmailVerification;
 

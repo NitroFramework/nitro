@@ -3,7 +3,7 @@
 namespace App\Controllers\Auth;
 
 use Nitro\Auth\Passwords\PasswordBroker;
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 use Nitro\Http\Response;
 use Nitro\Mail\Contracts\Mailer;
@@ -11,7 +11,7 @@ use Nitro\Mail\Contracts\Mailer;
 /**
  * Handles requesting a password-reset link (Laravel's PasswordResetLinkController).
  */
-class PasswordResetLinkController extends BaseController
+class PasswordResetLinkController extends Controller
 {
     /** Show the "forgot password" form. */
     public function create(): Response

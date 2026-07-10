@@ -3,7 +3,7 @@
 namespace App\Controllers\Auth;
 
 use Nitro\Auth\Contracts\MustVerifyEmail;
-use Nitro\Http\Controller\BaseController;
+use Nitro\Http\Controller\Controller;
 use Nitro\Http\RedirectResponse;
 
 /**
@@ -11,7 +11,7 @@ use Nitro\Http\RedirectResponse;
  * VerifyEmailController). The {id}/{hash} must match the logged-in user; the
  * route is also behind 'auth', so only the owner can verify.
  */
-class VerifyEmailController extends BaseController
+class VerifyEmailController extends Controller
 {
     public function verify(string $id, string $hash): RedirectResponse
     {
