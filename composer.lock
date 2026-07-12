@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9cad7624f98d364ff1bf2a709077cc71",
+    "content-hash": "86e8863900480b4738b8e37975698992",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -69,20 +69,78 @@
             "time": "2025-12-27T19:43:20+00:00"
         },
         {
-            "name": "nitro/framework",
-            "version": "v0.19.1",
+            "name": "nikic/php-parser",
+            "version": "v5.8.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "9070b0a58329ef68c45b235160c9476e9b96a355"
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/9070b0a58329ef68c45b235160c9476e9b96a355",
-                "reference": "9070b0a58329ef68c45b235160c9476e9b96a355",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
+                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
                 "shasum": ""
             },
             "require": {
+                "ext-json": "*",
+                "ext-tokenizer": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "ircmaxell/php-yacc": "^0.0.7",
+                "phpunit/phpunit": "^9.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/nikic/PHP-Parser/issues",
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.8.0"
+            },
+            "time": "2026-07-04T14:30:18+00:00"
+        },
+        {
+            "name": "nitro/framework",
+            "version": "v0.20.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NitroFramework/framework.git",
+                "reference": "04cc1ce612a4d814281fcfd21dc559218ecaa55c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/04cc1ce612a4d814281fcfd21dc559218ecaa55c",
+                "reference": "04cc1ce612a4d814281fcfd21dc559218ecaa55c",
+                "shasum": ""
+            },
+            "require": {
+                "nikic/php-parser": "^5.3",
                 "php": "^8.2",
                 "phpoption/phpoption": "^1.9",
                 "vlucas/phpdotenv": "^5.6"
@@ -116,7 +174,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-07-11T23:54:48+00:00"
+            "time": "2026-07-12T16:50:37+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -590,63 +648,6 @@
                 }
             ],
             "time": "2025-08-01T08:46:24+00:00"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v5.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
-                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-tokenizer": "*",
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "ircmaxell/php-yacc": "^0.0.7",
-                "phpunit/phpunit": "^9.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.8.0"
-            },
-            "time": "2026-07-04T14:30:18+00:00"
         },
         {
             "name": "phar-io/manifest",
