@@ -6,7 +6,7 @@ use Nitro\Container\Container;
 use Nitro\Cookie\CookieJar;
 use Nitro\Cookie\CookieValuePrefix;
 use Nitro\Foundation\Application;
-use Nitro\Foundation\Http\Kernel;
+use Nitro\Http\Kernel;
 use Nitro\Http\Cookie;
 use Nitro\Http\Middleware\EncryptCookies;
 use Nitro\Http\Request;
