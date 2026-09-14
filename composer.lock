@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b6db952280d8af02fe9be38f4e89759",
+    "content-hash": "d8133e641f5a2ffdba4d907bc108016c",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -70,16 +70,16 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.23.0",
+            "version": "v0.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "968550178ba533c5e18693d0140393658b9fd12b"
+                "reference": "c4ed3de01cdb1216d7e24fdbcaccc45bbf494316"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/968550178ba533c5e18693d0140393658b9fd12b",
-                "reference": "968550178ba533c5e18693d0140393658b9fd12b",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/c4ed3de01cdb1216d7e24fdbcaccc45bbf494316",
+                "reference": "c4ed3de01cdb1216d7e24fdbcaccc45bbf494316",
                 "shasum": ""
             },
             "require": {
@@ -116,7 +116,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-09-13T18:51:28+00:00"
+            "time": "2026-09-14T17:56:20+00:00"
         },
         {
             "name": "phpoption/phpoption",
