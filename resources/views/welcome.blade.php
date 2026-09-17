@@ -14,7 +14,8 @@
             </h1>
             <p class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-brand-100 sm:text-lg">
                 Routing, an Eloquent-style ORM, a Blade-compatible view engine, validation, queues,
-                auth, and a reactive HTMX&nbsp;+&nbsp;Livewire layer — on a deliberately small core.
+                auth, and a reactive Livewire-shaped layer — on a deliberately small core, with no
+                runtime dependencies.
             </p>
 
             <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
@@ -48,8 +49,8 @@
             <div class="text-2xl">⚡</div>
             <h3 class="mt-4 text-base font-bold">Reactive, no SPA</h3>
             <p class="mt-1.5 text-sm leading-relaxed text-slate-600">
-                Server-rendered components swapped over the wire with a built-in HTMX layer and a
-                from-scratch Livewire-shaped layer.
+                Server-rendered components swapped over the wire by a from-scratch
+                Livewire-shaped layer.
             </p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-slate-200/60">

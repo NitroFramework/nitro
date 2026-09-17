@@ -40,7 +40,6 @@
     </main>
 
     @stack('scripts')
-    @htmxScripts
     @livewireScripts
 </body>
 

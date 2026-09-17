@@ -59,9 +59,9 @@
 	# only opens ~6 connections per host, so headers like these are the
 	# single biggest browser-perceived perf win short of HTTPS+HTTP/2.
 	# Extension-based, but EXCLUDE the framework's dynamic runtime routes
-	# (/nitro/hx-component.js, /livewire/livewire.js, …). Those end in .js but are
-	# served by PHP, not files on disk — without this exclusion file_server 404s
-	# them and htmx/livewire never load (full-page-load fallback).
+	# (/livewire/livewire.js, …). Those end in .js but are served by PHP, not
+	# files on disk — without this exclusion file_server 404s them and Livewire
+	# never loads (full-page-load fallback).
 	@static_immutable {
 		path *.css *.js *.png *.jpg *.jpeg *.gif *.svg *.webp *.ico *.woff *.woff2 *.ttf *.eot *.otf
 		not path /nitro/* /livewire/*

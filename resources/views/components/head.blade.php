@@ -11,17 +11,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 
     <link rel="stylesheet" href="/css/app.css">
-    @if (config('nprogress.enabled'))
-        <link rel="stylesheet" href="/css/vendor/nprogress.css">
-    @endif
 
-    <script defer src="/js/vendor/htmx.min.js"></script>
-    <script defer src="/js/vendor/idiomorph-ext.min.js"></script>
     <script defer src="/js/vendor/alpine.min.js"></script>
-    @if (config('nprogress.enabled'))
-        <script defer src="/js/vendor/nprogress.js"></script>
-        @nprogressScripts
-    @endif
 
     @livewireStyles
 </head>

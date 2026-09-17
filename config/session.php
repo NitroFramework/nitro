@@ -8,7 +8,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Backend for the session Store. Supported: "native" (default — PHP's own
-    | $_SESSION, interoperates with the CSRF/HTMX layer and classic SAPIs),
+    | $_SESSION, interoperates with the CSRF layer and classic SAPIs),
     | "file" (cookie + file handler, worker-safe), "array" (in-memory, tests).
     | Redis/database drivers can be added in SessionManager without touching
     | anything that depends on the Store.

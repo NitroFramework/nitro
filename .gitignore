@@ -13,5 +13,3 @@
 .DS_Store
 Thumbs.db
 
-# app-specific htmx dispatcher (not part of the skeleton)
-/app/Controllers/HtmxDispatcher.php
