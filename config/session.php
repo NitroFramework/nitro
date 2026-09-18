@@ -9,9 +9,12 @@ return [
     |
     | Backend for the session Store. Supported: "native" (default — PHP's own
     | $_SESSION, interoperates with the CSRF layer and classic SAPIs),
-    | "file" (cookie + file handler, worker-safe), "array" (in-memory, tests).
-    | Redis/database drivers can be added in SessionManager without touching
-    | anything that depends on the Store.
+    | "file" (cookie + file handler, worker-safe), "array" (in-memory, tests),
+    | "redis" and "database".
+    |
+    | Deployed across more than one instance, choose "redis" or "database". A
+    | file session lives on the instance that wrote it, so a second instance
+    | does not see it and a redeploy throws every session away.
     |
     */
     'driver' => env('SESSION_DRIVER', 'native'),
@@ -40,6 +43,29 @@ return [
     |
     */
     'files' => env('SESSION_FILES', null),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Redis Store
+    |--------------------------------------------------------------------------
+    |
+    | Which connection under database.redis the "redis" driver writes to, and
+    | the prefix its keys carry. Null takes the default connection.
+    |
+    */
+    'connection' => env('SESSION_CONNECTION') ?: null,
+    'prefix' => env('SESSION_PREFIX', 'nitro:session:'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Database Store
+    |--------------------------------------------------------------------------
+    |
+    | The table the "database" driver reads and writes. See the
+    | create_sessions_table migration for its shape.
+    |
+    */
+    'table' => env('SESSION_TABLE', 'sessions'),
 
     /*
     |--------------------------------------------------------------------------

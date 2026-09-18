@@ -70,14 +70,22 @@ return [
         'default' => env('REDIS_CONNECTION', 'default'),
         'connections' => [
             'default' => [
+                // 'tls' when the provider terminates TLS, which managed Redis
+                // and Valkey normally do; 'tcp' for a server on this machine.
+                'scheme' => env('REDIS_SCHEME', 'tcp'),
                 'host' => env('REDIS_HOST', '127.0.0.1'),
                 'port' => (int) env('REDIS_PORT', 6379),
+                // A username means ACL authentication. Leave it unset for a
+                // server that only has a password.
+                'username' => env('REDIS_USERNAME') ?: null,
                 'password' => env('REDIS_PASSWORD') ?: null,
                 'database' => (int) env('REDIS_DB', 0),
             ],
             'cache' => [
+                'scheme' => env('REDIS_SCHEME', 'tcp'),
                 'host' => env('REDIS_HOST', '127.0.0.1'),
                 'port' => (int) env('REDIS_PORT', 6379),
+                'username' => env('REDIS_USERNAME') ?: null,
                 'password' => env('REDIS_PASSWORD') ?: null,
                 'database' => (int) env('REDIS_CACHE_DB', 1),
             ],

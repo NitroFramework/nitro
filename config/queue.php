@@ -27,6 +27,9 @@ return [
     |   sync      — Run jobs inline on dispatch. Dev/tests.
     |   array     — In-memory. Tests that exercise queue semantics.
     |   database  — Real queue, stored in the SQL `jobs` table. Production.
+    |   redis     — Real queue, stored in Redis. Production; lower latency
+    |               than polling a table, and the natural choice when the
+    |               platform already gives you a managed Redis.
     |
     */
     'connections' => [
@@ -45,6 +48,14 @@ return [
             // Seconds before a reserved job is considered orphaned and
             // becomes eligible for another worker to pick up. Set to
             // a value LONGER than the slowest expected job runtime.
+            'retry_after' => 90,
+        ],
+
+        'redis' => [
+            'driver'      => 'redis',
+            // A connection name under database.redis; null takes the default.
+            'connection'  => env('REDIS_QUEUE_CONNECTION') ?: null,
+            'prefix'      => env('REDIS_QUEUE_PREFIX', 'nitro:queue:'),
             'retry_after' => 90,
         ],
 
