@@ -4,39 +4,76 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Channel
+    | Default Channel
     |--------------------------------------------------------------------------
     |
-    | Where log lines go. "file" writes to storage/logs; "stderr" and "stdout"
-    | write to the process's own streams.
-    |
-    | On a container platform choose a stream: the platform collects what the
-    | process writes, and a file inside the container is thrown away when the
-    | container is replaced.
+    | The channel used when none is named. It must be one of the channels
+    | listed below — a name that is not configured raises rather than falling
+    | back, so a channel injected by a platform fails loudly instead of
+    | writing somewhere nobody reads.
     |
     */
-    'channel' => env('LOG_CHANNEL', 'file'),
+    'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
     |--------------------------------------------------------------------------
-    | File Location
+    | Channels
     |--------------------------------------------------------------------------
     |
-    | Overrides the default path when the channel is "file". Null uses
-    | storage/logs/nitro.log.
+    | Each channel names a driver and its options. Available drivers:
+    | single, daily, stream, errorlog, null, and stack.
     |
     */
-    'path' => env('LOG_PATH') ?: null,
+    'channels' => [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Rotation
-    |--------------------------------------------------------------------------
-    |
-    | Move the log aside once it reaches this many bytes, so it cannot grow
-    | without bound. 0 disables rotation; a stream channel ignores it.
-    |
-    */
-    'max_bytes' => (int) env('LOG_MAX_BYTES', 5242880),
+        // A file and the process's own output. A container platform collects
+        // the latter; a file inside a container goes away with the container.
+        'stack' => [
+            'driver'            => 'stack',
+            'channels'          => ['single', 'stderr'],
+            'ignore_exceptions' => true,
+        ],
+
+        // One file, moved aside once it reaches max_bytes.
+        'single' => [
+            'driver'    => 'single',
+            'path'      => env('LOG_PATH') ?: null,
+            'max_bytes' => (int) env('LOG_MAX_BYTES', 5242880),
+            'level'     => env('LOG_LEVEL', 'debug'),
+        ],
+
+        // One file per day, keeping the last fortnight.
+        'daily' => [
+            'driver' => 'daily',
+            'path'   => env('LOG_PATH') ?: null,
+            'days'   => (int) env('LOG_DAILY_DAYS', 14),
+            'level'  => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'stderr' => [
+            'driver' => 'stream',
+            'stream' => 'php://stderr',
+            'level'  => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'stdout' => [
+            'driver' => 'stream',
+            'stream' => 'php://stdout',
+            'level'  => env('LOG_LEVEL', 'debug'),
+        ],
+
+        // Hands the line to PHP's error_log(); where it lands is the SAPI's
+        // business, which suits a host that already collects PHP's output.
+        'errorlog' => [
+            'driver' => 'errorlog',
+            'level'  => env('LOG_LEVEL', 'debug'),
+        ],
+
+        // Silences logging without removing the calls that write to it.
+        'null' => [
+            'driver' => 'null',
+        ],
+
+    ],
 
 ];
