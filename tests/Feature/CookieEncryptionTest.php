@@ -35,7 +35,7 @@ class CookieEncryptionTest extends TestCase
 
     public function test_cookie_jar_resolves_and_helper_returns_it(): void
     {
-        $this->assertInstanceOf(CookieJar::class, Container::getInstance()->make('cookie'));
+        $this->assertInstanceOf(CookieJar::class, Container::getInstance()->resolve('cookie'));
         $this->assertInstanceOf(CookieJar::class, cookie());
         $this->assertInstanceOf(Cookie::class, cookie('theme', 'dark', 60));
     }
@@ -48,7 +48,7 @@ class CookieEncryptionTest extends TestCase
 
     public function test_cookie_round_trips_through_the_middleware_with_the_app_key(): void
     {
-        $mw = Container::getInstance()->make(EncryptCookies::class);
+        $mw = Container::getInstance()->resolve(EncryptCookies::class);
 
         // Encrypt on the way out.
         $response = $mw->handle(
@@ -66,7 +66,7 @@ class CookieEncryptionTest extends TestCase
 
     public function test_session_cookie_is_excepted(): void
     {
-        $mw = Container::getInstance()->make(EncryptCookies::class);
+        $mw = Container::getInstance()->resolve(EncryptCookies::class);
         $sessionCookie = (string) config('session.cookie', 'nitro_session');
 
         // The session cookie must pass through unencrypted (session owns it).

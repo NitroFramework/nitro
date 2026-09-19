@@ -30,7 +30,7 @@ class EncryptionTest extends TestCase
 
     public function test_encrypter_resolves_from_the_container(): void
     {
-        $enc = Container::getInstance()->make('encrypter');
+        $enc = Container::getInstance()->resolve('encrypter');
 
         $this->assertInstanceOf(Encrypter::class, $enc);
         $this->assertSame(32, strlen($enc->getKey()), 'app key decodes to 32 bytes (aes-256)');
@@ -40,8 +40,8 @@ class EncryptionTest extends TestCase
     {
         $c = Container::getInstance();
 
-        $this->assertInstanceOf(Encrypter::class, $c->make(Encrypter::class));
-        $this->assertInstanceOf(Encrypter::class, $c->make(EncrypterContract::class));
+        $this->assertInstanceOf(Encrypter::class, $c->resolve(Encrypter::class));
+        $this->assertInstanceOf(Encrypter::class, $c->resolve(EncrypterContract::class));
     }
 
     public function test_crypt_facade_round_trips(): void

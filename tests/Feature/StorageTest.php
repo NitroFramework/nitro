@@ -30,8 +30,8 @@ class StorageTest extends TestCase
 
     public function test_manager_and_default_disk_resolve(): void
     {
-        $this->assertInstanceOf(FilesystemManager::class, Container::getInstance()->make('filesystem'));
-        $this->assertInstanceOf(Filesystem::class, Container::getInstance()->make(Filesystem::class));
+        $this->assertInstanceOf(FilesystemManager::class, Container::getInstance()->resolve('filesystem'));
+        $this->assertInstanceOf(Filesystem::class, Container::getInstance()->resolve(Filesystem::class));
     }
 
     public function test_storage_facade_round_trips_a_file(): void

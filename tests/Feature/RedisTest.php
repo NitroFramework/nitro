@@ -56,7 +56,7 @@ class RedisTest extends TestCase
 
     public function test_redis_manager_resolves(): void
     {
-        $this->assertInstanceOf(RedisManager::class, Container::getInstance()->make('redis'));
+        $this->assertInstanceOf(RedisManager::class, Container::getInstance()->resolve('redis'));
     }
 
     public function test_facade_round_trips_against_a_live_server(): void

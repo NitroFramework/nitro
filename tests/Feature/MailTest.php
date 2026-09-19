@@ -32,15 +32,15 @@ class MailTest extends TestCase
 
     public function test_manager_and_default_mailer_resolve(): void
     {
-        $this->assertInstanceOf(MailManager::class, Container::getInstance()->make('mail'));
+        $this->assertInstanceOf(MailManager::class, Container::getInstance()->resolve('mail'));
         // The legacy contract binding used by the auth flows.
-        $this->assertInstanceOf(MailerContract::class, Container::getInstance()->make(MailerContract::class));
+        $this->assertInstanceOf(MailerContract::class, Container::getInstance()->resolve(MailerContract::class));
     }
 
     public function test_raw_send_works_for_auth_flows(): void
     {
         // app(Mailer::class)->raw($to, $subject, $body) must not throw (log driver).
-        Container::getInstance()->make(MailerContract::class)->raw('user@x.dev', 'Reset', 'link');
+        Container::getInstance()->resolve(MailerContract::class)->raw('user@x.dev', 'Reset', 'link');
         $this->assertTrue(true);
     }
 

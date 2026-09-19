@@ -18,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->schedule($this->container->make(Schedule::class));
+        $this->schedule($this->container->resolve(Schedule::class));
     }
 
     /**

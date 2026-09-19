@@ -29,7 +29,7 @@ class ScheduleTest extends TestCase
 
     private function schedule(): Schedule
     {
-        return Container::getInstance()->make(Schedule::class);
+        return Container::getInstance()->resolve(Schedule::class);
     }
 
     public function test_schedule_resolves_and_app_registered_tasks(): void
@@ -60,7 +60,7 @@ class ScheduleTest extends TestCase
 
     public function test_schedule_run_command_is_registered(): void
     {
-        $descriptions = Container::getInstance()->make(CommandManager::class)->getDescriptions();
+        $descriptions = Container::getInstance()->resolve(CommandManager::class)->getDescriptions();
 
         $this->assertArrayHasKey('schedule:run', $descriptions);
         $this->assertArrayHasKey('schedule:list', $descriptions);
