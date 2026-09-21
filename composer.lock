@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "66adece5b3e5f2e50c91b7eb8765290c",
+    "content-hash": "781fa85f41f4896b26a282acb729f954",
     "packages": [
         {
             "name": "nitro/framework",
-            "version": "v0.36.0",
+            "version": "v0.36.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "c36a92eb72f4f23d93d13e55fde667c34dccbfa0"
+                "reference": "158035832fa330e4b7a394895e6b96b6dc0f7743"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/c36a92eb72f4f23d93d13e55fde667c34dccbfa0",
-                "reference": "c36a92eb72f4f23d93d13e55fde667c34dccbfa0",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/158035832fa330e4b7a394895e6b96b6dc0f7743",
+                "reference": "158035832fa330e4b7a394895e6b96b6dc0f7743",
                 "shasum": ""
             },
             "require": {
@@ -74,7 +74,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-09-21T19:54:30+00:00"
+            "time": "2026-09-21T20:04:52+00:00"
         }
     ],
     "packages-dev": [

@@ -7,7 +7,6 @@ use Nitro\Console\CommandManager;
 use Nitro\Container\Container;
 use Nitro\Foundation\Application;
 use Nitro\Scheduling\Schedule;
-use Nitro\Scheduling\ScheduleContext;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,7 +40,7 @@ class ScheduleTest extends TestCase
         $this->assertNotEmpty($schedule->events(), 'AppServiceProvider registered at least one task');
     }
 
-    public function test_due_event_runs_through_the_schedule_context(): void
+    public function test_due_event_runs(): void
     {
         $ran = false;
         $this->schedule()->call(function () use (&$ran): void { $ran = true; })
@@ -50,11 +49,10 @@ class ScheduleTest extends TestCase
 
         $due = $this->schedule()->dueEvents(new DateTimeImmutable('2026-06-15 13:30:00'));
 
-        $context = Container::getInstance()->resolve(ScheduleContext::class);
-
         foreach ($due as $event) {
             if ($event->getDescription() === '__test_marker__') {
-                $event->run($context);
+                // The schedule built it, so it carries what it needs to run.
+                $event->run();
             }
         }
 
