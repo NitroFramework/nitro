@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83c339767fbf782253b0d9af948185ad",
+    "content-hash": "7ab0ca501baf35c7b7fb23121ca83a8c",
     "packages": [
         {
             "name": "illuminate/container",
@@ -168,16 +168,16 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.37.0",
+            "version": "v0.38.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "4935d274d854637c21481afad7aba0378b9a8b64"
+                "reference": "af83482e00599315e96093ed22ca6f4064892349"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/4935d274d854637c21481afad7aba0378b9a8b64",
-                "reference": "4935d274d854637c21481afad7aba0378b9a8b64",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/af83482e00599315e96093ed22ca6f4064892349",
+                "reference": "af83482e00599315e96093ed22ca6f4064892349",
                 "shasum": ""
             },
             "require": {
@@ -240,7 +240,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-09-23T23:12:02+00:00"
+            "time": "2026-09-24T19:59:10+00:00"
         },
         {
             "name": "psr/container",
