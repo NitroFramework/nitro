@@ -1,15 +1,11 @@
-# Treat bundled front-end assets as vendored/generated so GitHub Linguist
-# reports the repo's actual language (PHP) instead of the theme's CSS/JS.
-public/assets/**     linguist-vendored
-public/js/vendor/**  linguist-vendored
-public/css/**        linguist-vendored
-*.min.css            linguist-vendored
-*.min.js             linguist-vendored
-*.map                linguist-generated
+* text=auto eol=lf
 
-# (The livewire.js and hx-component.js runtimes are now served by the framework
-# itself — no app copies remain in public/js.)
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
 
-# Count Blade templates as PHP (Linguist tags them as a separate "Blade"
-# language by default, which starves the PHP stat).
-*.blade.php  linguist-language=PHP
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore

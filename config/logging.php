@@ -1,77 +1,138 @@
 <?php
 
+use Monolog\Handler\NullHandler;
+use Monolog\Handler\StreamHandler;
+use Monolog\Handler\SyslogUdpHandler;
+use Monolog\Processor\PsrLogMessageProcessor;
+
 return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Channel
+    | Default Log Channel
     |--------------------------------------------------------------------------
     |
-    | The channel used when none is named. It must be one of the channels
-    | listed below — a name that is not configured raises rather than falling
-    | back, so a channel injected by a platform fails loudly instead of
-    | writing somewhere nobody reads.
+    | This option defines the default log channel that is utilized to write
+    | messages to your logs. The value provided here should match one of
+    | the channels present in the list of "channels" configured below.
     |
     */
+
     'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
     |--------------------------------------------------------------------------
-    | Channels
+    | Deprecations Log Channel
     |--------------------------------------------------------------------------
     |
-    | Each channel names a driver and its options. Available drivers:
-    | single, daily, stream, errorlog, null, and stack.
+    | This option controls the log channel that should be used to log warnings
+    | regarding deprecated PHP and library features. This allows you to get
+    | your application ready for upcoming major versions of dependencies.
     |
     */
+
+    'deprecations' => [
+        'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
+        'trace' => env('LOG_DEPRECATIONS_TRACE', false),
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Log Channels
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log channels for your application. Laravel
+    | utilizes the Monolog PHP logging library, which includes a variety
+    | of powerful log handlers and formatters that you're free to use.
+    |
+    | Available drivers: "single", "daily", "monthly", "slack", "syslog",
+    |                    "errorlog", "monolog", "custom", "stack"
+    |
+    */
+
     'channels' => [
 
-        // A file and the process's own output. A container platform collects
-        // the latter; a file inside a container goes away with the container.
         'stack' => [
-            'driver'            => 'stack',
-            'channels'          => ['single', 'stderr'],
-            'ignore_exceptions' => true,
+            'driver' => 'stack',
+            'channels' => explode(',', (string) env('LOG_STACK', 'single')),
+            'ignore_exceptions' => false,
         ],
 
-        // One file, moved aside once it reaches max_bytes.
         'single' => [
-            'driver'    => 'single',
-            'path'      => env('LOG_PATH') ?: null,
-            'max_bytes' => (int) env('LOG_MAX_BYTES', 5242880),
-            'level'     => env('LOG_LEVEL', 'debug'),
+            'driver' => 'single',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
         ],
 
-        // One file per day, keeping the last fortnight.
         'daily' => [
             'driver' => 'daily',
-            'path'   => env('LOG_PATH') ?: null,
-            'days'   => (int) env('LOG_DAILY_DAYS', 14),
-            'level'  => env('LOG_LEVEL', 'debug'),
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'max_files' => env('LOG_DAILY_DAYS', 14),
+            'replace_placeholders' => true,
+        ],
+
+        'monthly' => [
+            'driver' => 'monthly',
+            'path' => storage_path('logs/laravel.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'max_files' => 3,
+            'replace_placeholders' => true,
+        ],
+
+        'slack' => [
+            'driver' => 'slack',
+            'url' => env('LOG_SLACK_WEBHOOK_URL'),
+            'username' => env('LOG_SLACK_USERNAME', env('APP_NAME', 'Laravel')),
+            'emoji' => env('LOG_SLACK_EMOJI', ':boom:'),
+            'level' => env('LOG_LEVEL', 'critical'),
+            'replace_placeholders' => true,
+        ],
+
+        'papertrail' => [
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => env('LOG_PAPERTRAIL_HANDLER', SyslogUdpHandler::class),
+            'handler_with' => [
+                'host' => env('PAPERTRAIL_URL'),
+                'port' => env('PAPERTRAIL_PORT'),
+                'connectionString' => 'tls://'.env('PAPERTRAIL_URL').':'.env('PAPERTRAIL_PORT'),
+            ],
+            'processors' => [PsrLogMessageProcessor::class],
         ],
 
         'stderr' => [
-            'driver' => 'stream',
-            'stream' => 'php://stderr',
-            'level'  => env('LOG_LEVEL', 'debug'),
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => StreamHandler::class,
+            'handler_with' => [
+                'stream' => 'php://stderr',
+            ],
+            'formatter' => env('LOG_STDERR_FORMATTER'),
+            'processors' => [PsrLogMessageProcessor::class],
         ],
 
-        'stdout' => [
-            'driver' => 'stream',
-            'stream' => 'php://stdout',
-            'level'  => env('LOG_LEVEL', 'debug'),
+        'syslog' => [
+            'driver' => 'syslog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'facility' => env('LOG_SYSLOG_FACILITY', LOG_USER),
+            'replace_placeholders' => true,
         ],
 
-        // Hands the line to PHP's error_log(); where it lands is the SAPI's
-        // business, which suits a host that already collects PHP's output.
         'errorlog' => [
             'driver' => 'errorlog',
-            'level'  => env('LOG_LEVEL', 'debug'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
         ],
 
-        // Silences logging without removing the calls that write to it.
         'null' => [
-            'driver' => 'null',
+            'driver' => 'monolog',
+            'handler' => NullHandler::class,
+        ],
+
+        'emergency' => [
+            'path' => storage_path('logs/laravel.log'),
         ],
 
     ],

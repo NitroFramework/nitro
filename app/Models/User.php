@@ -1,45 +1,32 @@
 <?php
-// app/Models/User.php
 
 namespace App\Models;
 
-use Nitro\Auth\Concerns\Authenticatable;
-use Nitro\Auth\Concerns\MustVerifyEmail as MustVerifyEmailTrait;
-use Nitro\Auth\Contracts\Authenticatable as AuthenticatableContract;
-use Nitro\Auth\Contracts\MustVerifyEmail as MustVerifyEmailContract;
-use Nitro\Database\Factory\HasFactory;
-use Nitro\Database\Model\Model;
-use Nitro\Notifications\Notifiable;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Database\Factories\UserFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Hidden;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends Model implements AuthenticatableContract, MustVerifyEmailContract
+#[Fillable(['name', 'email', 'password'])]
+#[Hidden(['password', 'remember_token'])]
+class User extends Authenticatable
 {
-    use HasFactory;
-    use Authenticatable;
-    use MustVerifyEmailTrait;
-    use Notifiable;
+    /** @use HasFactory<UserFactory> */
+    use HasFactory, Notifiable;
 
-    protected string $table = 'users';
-
-    protected array $fillable = [
-        'name',
-        'email',
-        'password',
-        'status',
-        'email_verified_at',
-    ];
-
-    protected array $hidden = [
-        'password'
-    ];
-
-    // Relationships
-    public function posts()
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
     {
-        return $this->hasMany(Post::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }

@@ -4,13 +4,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Queue Connection
+    | Default Queue Connection Name
     |--------------------------------------------------------------------------
     |
-    | The connection name used when Job::dispatch() doesn't specify one.
-    | Match the connection key under 'connections' below.
+    | Laravel's queue supports a variety of backends via a single, unified
+    | API, giving you convenient access to each backend using identical
+    | syntax for each. The default queue connection is defined below.
     |
     */
+
     'default' => env('QUEUE_CONNECTION', 'database'),
 
     /*
@@ -18,73 +20,110 @@ return [
     | Queue Connections
     |--------------------------------------------------------------------------
     |
-    | Each connection picks a driver and provides driver-specific options.
-    | A "connection" is a storage backend; named queues ('default', 'mail',
-    | 'reports') live INSIDE a connection. One database connection can hold
-    | many queues — workers pick which queues to serve via --queue=...
+    | Here you may configure the connection options for every queue backend
+    | used by your application. An example configuration is provided for
+    | each backend supported by Laravel. You're also free to add more.
     |
-    | Drivers:
-    |   sync      — Run jobs inline on dispatch. Dev/tests.
-    |   array     — In-memory. Tests that exercise queue semantics.
-    |   database  — Real queue, stored in the SQL `jobs` table. Production.
-    |   redis     — Real queue, stored in Redis. Production; lower latency
-    |               than polling a table, and the natural choice when the
-    |               platform already gives you a managed Redis.
+    | Drivers: "sync", "database", "beanstalkd", "sqs", "redis",
+    |          "deferred", "background", "failover", "null"
     |
     */
+
     'connections' => [
 
         'sync' => [
             'driver' => 'sync',
         ],
 
-        'array' => [
-            'driver' => 'array',
+        'database' => [
+            'driver' => 'database',
+            'connection' => env('DB_QUEUE_CONNECTION'),
+            'table' => env('DB_QUEUE_TABLE', 'jobs'),
+            'queue' => env('DB_QUEUE', 'default'),
+            'retry_after' => (int) env('DB_QUEUE_RETRY_AFTER', 90),
+            'after_commit' => false,
         ],
 
-        'database' => [
-            'driver'      => 'database',
-            'table'       => 'jobs',
-            // Seconds before a reserved job is considered orphaned and
-            // becomes eligible for another worker to pick up. Set to
-            // a value LONGER than the slowest expected job runtime.
-            'retry_after' => 90,
+        'beanstalkd' => [
+            'driver' => 'beanstalkd',
+            'host' => env('BEANSTALKD_QUEUE_HOST', 'localhost'),
+            'queue' => env('BEANSTALKD_QUEUE', 'default'),
+            'retry_after' => (int) env('BEANSTALKD_QUEUE_RETRY_AFTER', 90),
+            'block_for' => 0,
+            'after_commit' => false,
+        ],
+
+        'sqs' => [
+            'driver' => 'sqs',
+            'key' => env('AWS_ACCESS_KEY_ID'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY'),
+            'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
+            'queue' => env('SQS_QUEUE', 'default'),
+            'suffix' => env('SQS_SUFFIX'),
+            'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+            'after_commit' => false,
         ],
 
         'redis' => [
-            'driver'      => 'redis',
-            // A connection name under database.redis; null takes the default.
-            'connection'  => env('REDIS_QUEUE_CONNECTION') ?: null,
-            'prefix'      => env('REDIS_QUEUE_PREFIX', 'nitro:queue:'),
-            'retry_after' => 90,
+            'driver' => 'redis',
+            'connection' => env('REDIS_QUEUE_CONNECTION', 'default'),
+            'queue' => env('REDIS_QUEUE', 'default'),
+            'retry_after' => (int) env('REDIS_QUEUE_RETRY_AFTER', 90),
+            'block_for' => null,
+            'after_commit' => false,
+        ],
+
+        'deferred' => [
+            'driver' => 'deferred',
+        ],
+
+        'background' => [
+            'driver' => 'background',
+        ],
+
+        'failover' => [
+            'driver' => 'failover',
+            'connections' => [
+                'database',
+                'deferred',
+            ],
         ],
 
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Failed Job Storage
+    | Job Batching
     |--------------------------------------------------------------------------
+    |
+    | The following options configure the database and table that store job
+    | batching information. These options can be updated to any database
+    | connection and table which has been defined by your application.
+    |
     */
-    'failed' => [
-        'table' => 'failed_jobs',
+
+    'batching' => [
+        'database' => env('DB_CONNECTION', 'sqlite'),
+        'table' => 'job_batches',
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Worker Defaults
+    | Failed Queue Jobs
     |--------------------------------------------------------------------------
     |
-    | Defaults applied when queue:work is run without the corresponding flag.
-    | Individual flags on the command line override these.
+    | These options configure the behavior of failed queue job logging so you
+    | can control how and where failed jobs are stored. Laravel ships with
+    | support for storing failed jobs in a simple file or in a database.
+    |
+    | Supported drivers: "database-uuids", "dynamodb", "file", "null"
     |
     */
-    'worker' => [
-        'sleep'      => 1,       // Seconds to wait when the queue is empty.
-        'tries'      => null,    // null = honor each job's own $tries.
-        'max_jobs'   => 0,       // 0 = unlimited (process until signal).
-        'max_time'   => 0,       // 0 = unlimited (process until signal).
-        'max_memory' => 128,     // MB — exit and let supervisor respawn.
+
+    'failed' => [
+        'driver' => env('QUEUE_FAILED_DRIVER', 'database-uuids'),
+        'database' => env('DB_CONNECTION', 'sqlite'),
+        'table' => 'failed_jobs',
     ],
 
 ];
