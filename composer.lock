@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "885cedb6036dde1bbdf48a7fc1f65fec",
+    "content-hash": "1dd026fd1aa17a3e88495f162bac881b",
     "packages": [
         {
             "name": "illuminate/container",
@@ -168,16 +168,16 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.38.1",
+            "version": "v0.39.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "6a003368064030c8b724a6eeb0066cf75b2ff2ca"
+                "reference": "c7d636113b0480e7eea036e877f4b3d11013e3b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/6a003368064030c8b724a6eeb0066cf75b2ff2ca",
-                "reference": "6a003368064030c8b724a6eeb0066cf75b2ff2ca",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/c7d636113b0480e7eea036e877f4b3d11013e3b2",
+                "reference": "c7d636113b0480e7eea036e877f4b3d11013e3b2",
                 "shasum": ""
             },
             "require": {
@@ -192,32 +192,7 @@
             "type": "library",
             "autoload": {
                 "files": [
-                    "src/Support/Helpers/app.php",
-                    "src/Support/Helpers/config.php",
-                    "src/Support/Helpers/path.php",
-                    "src/Support/Helpers/array.php",
-                    "src/Support/Helpers/collection.php",
-                    "src/Support/Helpers/conditional.php",
-                    "src/Support/Helpers/debug.php",
-                    "src/Support/Helpers/file.php",
-                    "src/Support/Helpers/http.php",
-                    "src/Support/Helpers/request.php",
-                    "src/Support/Helpers/response.php",
-                    "src/Support/Helpers/security.php",
-                    "src/Support/Helpers/auth.php",
-                    "src/Support/Helpers/session.php",
-                    "src/Support/Helpers/string.php",
-                    "src/Support/Helpers/url.php",
-                    "src/Support/Helpers/utility.php",
-                    "src/Support/Helpers/validation.php",
-                    "src/Support/Helpers/view.php",
-                    "src/Support/Helpers/query.php",
-                    "src/Support/Helpers/cache.php",
-                    "src/Support/Helpers/cookie.php",
-                    "src/Support/Helpers/translation.php",
-                    "src/Support/Helpers/inertia.php",
-                    "src/Support/Helpers/event.php",
-                    "src/Support/Helpers/trace.php"
+                    "src/Support/helpers.php"
                 ],
                 "psr-4": {
                     "Nitro\\": "src/"
@@ -240,7 +215,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-09-24T20:30:04+00:00"
+            "time": "2026-09-25T18:21:53+00:00"
         },
         {
             "name": "psr/container",
