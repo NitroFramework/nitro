@@ -70,11 +70,8 @@ return [
         // Cache expiry in seconds (0 = never expire based on time, only on file changes)
         'expiry' => 0,
 
-        // Prime compiled views into PHP's opcache. Null decides from the
-        // environment — on in production, off in debug, where invalidating a
-        // template you just edited is what matters. Set true or false to
-        // override.
-        'use_opcache' => null,
+        // Prime compiled views into PHP's opcache, wherever opcache is available
+        'use_opcache' => true,
 
         // Use file locks during compilation to prevent race conditions
         'use_locks' => false,
