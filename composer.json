@@ -8,11 +8,8 @@
     "require": {
         "php": "^8.3",
         "laravel/tinker": "^3.0",
-        "nitro/framework": "0.40.x-dev"
+        "nitro/framework": "^0.40.0"
     },
-    "repositories": [
-        { "type": "path", "url": "../nitro-framework", "options": { "symlink": true } }
-    ],
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.5",

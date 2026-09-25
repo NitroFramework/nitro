@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9f92d05407c1d3b9e7a9c37122e4bb7e",
+    "content-hash": "0b0edfa05fb892d8e09df0d5f8515887",
     "packages": [
         {
             "name": "brick/math",
@@ -2464,11 +2464,17 @@
         },
         {
             "name": "nitro/framework",
-            "version": "0.40.x-dev",
+            "version": "v0.40.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/NitroFramework/framework.git",
+                "reference": "b0a1f8a24d6697892afaea7c65df724b930c75dc"
+            },
             "dist": {
-                "type": "path",
-                "url": "../nitro-framework",
-                "reference": "b7cf8936081669701ccbef9167540a1f106dd1aa"
+                "type": "zip",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/b0a1f8a24d6697892afaea7c65df724b930c75dc",
+                "reference": "b0a1f8a24d6697892afaea7c65df724b930c75dc",
+                "shasum": ""
             },
             "require": {
                 "laravel/framework": "^13.33",
@@ -2490,19 +2496,7 @@
                     "Nitro\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Nitro\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "@php vendor/phpunit/phpunit/phpunit --colors=always"
-                ],
-                "analyse": [
-                    "@php vendor/bin/phpstan analyse --memory-limit=1G"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2519,10 +2513,7 @@
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "time": "2026-09-25T18:50:13+00:00"
         },
         {
             "name": "nunomaduro/termwind",
@@ -8409,9 +8400,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "nitro/framework": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
