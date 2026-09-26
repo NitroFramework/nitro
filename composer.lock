@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cd714bf29d01c69900e1675f2d87594",
+    "content-hash": "fca45d270b4c9ff421ea4502bc5bdb66",
     "packages": [
         {
             "name": "brick/math",
@@ -2464,16 +2464,16 @@
         },
         {
             "name": "nitro/framework",
-            "version": "v0.41.0",
+            "version": "v0.41.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/NitroFramework/framework.git",
-                "reference": "2bf41845cd1de1de8bd331e83869b2a64fd9f40d"
+                "reference": "94678a07325477727dd5872f7ef17136ed897d4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/2bf41845cd1de1de8bd331e83869b2a64fd9f40d",
-                "reference": "2bf41845cd1de1de8bd331e83869b2a64fd9f40d",
+                "url": "https://api.github.com/repos/NitroFramework/framework/zipball/94678a07325477727dd5872f7ef17136ed897d4d",
+                "reference": "94678a07325477727dd5872f7ef17136ed897d4d",
                 "shasum": ""
             },
             "require": {
@@ -2502,18 +2502,23 @@
             ],
             "authors": [
                 {
-                    "name": "ZeeshanX4",
+                    "name": "Zeeshan Ali",
                     "homepage": "https://github.com/ZeeshanX4",
                     "role": "Developer"
                 }
             ],
-            "description": "NitroPHP — Laravel with a compiled, lean request path. 100% Laravel API.",
+            "description": "Nitro: a PHP framework built on Laravel, with a compiled request path.",
             "homepage": "https://github.com/NitroFramework/framework",
+            "keywords": [
+                "framework",
+                "laravel",
+                "nitro"
+            ],
             "support": {
                 "issues": "https://github.com/NitroFramework/framework/issues",
                 "source": "https://github.com/NitroFramework/framework"
             },
-            "time": "2026-09-26T18:16:12+00:00"
+            "time": "2026-09-26T19:17:09+00:00"
         },
         {
             "name": "nunomaduro/termwind",
