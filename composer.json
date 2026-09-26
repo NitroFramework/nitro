@@ -8,7 +8,7 @@
     "require": {
         "php": "^8.3",
         "laravel/tinker": "^3.0",
-        "nitro/framework": "^0.40.0"
+        "nitro/framework": "^0.41.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
